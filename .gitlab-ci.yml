@@ -1,0 +1,48 @@
+image: instrumentisto/rsync-ssh
+
+before_script:
+  - apk add --update nodejs npm
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan 52.22.88.7  >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  - npm install -g yarn 
+  - yarn install
+  - yarn run build
+  - rm -rf .g-it
+  - rm -rf src
+
+stages:
+  - deploy_develop
+  # - deploy_production
+  # - prod_migrate_bd
+
+# deploy_production:
+#   stage: deploy_production
+#   script:
+#     - npm install --silent
+#     - npm run build --silent
+#     - ssh gitlab@52.22.88.7 'pm2 stop appContainers_prod'
+#     - rsync -r -a -z -e ssh --delete --exclude '.env' . gitlab@52.22.88.7:/home/gitlab/containers/productionfrontend/
+#     # - ssh gitlab@52.22.88.7 'cp -f /home/gitlab/fxcfive/datasources/prod.env /home/gitlab/fxcfive/production/frontend/.env'
+#     - ssh gitlab@52.22.88.7 'pm2 start appContainers_prod'
+#   only:
+#     - master
+
+# prod_migrate_bd:
+#   stage: prod_migrate_bd
+#   script:
+#     - ssh gitlab@52.22.88.7 'cd /home/gitlab/containers/production/frontend && npm run migrate'
+#   when: manual
+#   only:
+#     - master
+
+deploy_develop:
+  stage: deploy_develop
+  script:
+    - rsync -r -O -a -z -e ssh --delete . gitlab@52.22.88.7:/home/gitlab/signs/frontend/development
+    - ssh gitlab@52.22.88.7 'pm2 restart signs-front'
+  only:
+    - development
