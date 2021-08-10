@@ -326,8 +326,8 @@ export const setDefaultColorMode = (): 'dark' | 'light' => {
   let mode: 'light' | 'dark' = 'light';
 
   if (matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) {
-    const body = document.getElementsByTagName('html')[0];
-    body.classList.add('__dark-mode');
+    const html = document.getElementsByTagName('html')[0];
+    html.classList.add('__dark-mode');
 
     mode = 'dark';
   }
@@ -348,7 +348,7 @@ export const getNavigatorLocale = (): 'EN' | 'ES' => {
 
 export const toggleColorMode = () => {
   if (document) {
-    const body = document.getElementsByTagName('html')[0];
-    body.classList.toggle('__dark-mode');
+    const html = document.getElementsByTagName('html')[0];
+    html.classList.toggle('__dark-mode');
   }
 }

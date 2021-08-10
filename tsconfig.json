@@ -16,6 +16,9 @@
       ],
       "@main/*": [
         "src/containers/Main/*"
+      ],
+      "@landing/*": [
+        "src/containers/Landing/*"
       ]
     },
     "target": "es6",

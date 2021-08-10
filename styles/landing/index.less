@@ -1,12 +1,11 @@
-@import '../variables.less';
+@import './navbar.less';
 
 .landing {
-  height: 100vh;
-  background-color: @bg-color;
+  height: calc(100vh - 80px);
   transition: background-color .2s ease-in-out;
 }
 
 .landing-title {
-  color: @text-color;
   transition: color .2s ease-in-out;
+  text-align: center;
 }

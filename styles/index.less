@@ -1,13 +1,21 @@
+// @import "../fonts/noir-pro/styles.less";
+@import "./global/index.less";
+
+//lading page
+@import "./landing/index.less";
+
 html, *::before, *::after, * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: @text-emphasis;
+  font-family: 'Roboto', sans-serif;
 }
 
-@import "./global.less";
-@import "./flex-styles.less";
-@import "../fonts/noir-pro/styles.less";
-@import "./variables.less";
+ul {
+  list-style: none;
+}
 
-//lading page
-@import "./landing/index.less";
+html {
+  background-color: @bg-color;
+}

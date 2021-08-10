@@ -1,4 +1,9 @@
 {
+  "navPrice": "Prices",
+  "navServices": "Services",
+  "navContact": "Contact us",
+  "navPortfolio": "Porfolio",
+  "navAboutus": "About us",
   "landingTitle": "Welcome to next level Company",
   "landingCaption": "We Make",
   "landingDinamicServOne": "Mobile Applications",

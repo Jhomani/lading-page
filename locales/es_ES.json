@@ -1,4 +1,9 @@
 {
+  "navPrice": "Precios",
+  "navServices": "Servicios",
+  "navContact": "Contactanos",
+  "navPortfolio": "Portafolio",
+  "navAboutus": "Acerca de",
   "landingTitle": "Bienvenido a la empresa de dearrollo de otro nivel",
   "landingCaption": "Realizamos",
   "landingDinamicServOne": "Aplicaciones Moviles",

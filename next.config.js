@@ -27,7 +27,7 @@ module.exports = withCSS({
 				return config;
 			},
 			env: {
-				BACK_URL: 'https://bseniales.blockchainconsultora.com',
+				BACK_URL: 'https://dbseniales.blockchainconsultora.com',
 			}
 		}),
 	),

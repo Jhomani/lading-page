@@ -1,24 +1,18 @@
 import React, { memo } from 'react';
-import { switchLanguage } from "@redux/actions/app";
-import { useDispatch } from 'react-redux';
 import { Language } from '@components/LangHelper';
-import { toggleColorMode } from '@utils/global'
+import Layout from '@landing/Layout';
 
 const IndexPage = () => {
-  const dispatch = useDispatch();
-
-  const handleSwitchLang = (locale: 'EN' | 'ES') => {
-    toggleColorMode();
-
-    // dispatch(switchLanguage(locale));
-  }
+  const handleSwitchLang = () => { }
 
   console.log('refesh this component');
 
-  return (<div className="landing">
-    <h1 className="landing-title"><Language langKey="landingTitle" /></h1>
-    <button onClick={handleSwitchLang.bind({}, 'ES')}>theme</button>
-  </div>);
+  return <Layout>
+    <div className="landing">
+      <h2 className="landing-title"><Language langKey="landingTitle" /></h2>
+      <button onClick={handleSwitchLang.bind({}, 'ES')}>theme</button>
+    </div>
+  </Layout>;
 }
 
 export default memo(IndexPage);
