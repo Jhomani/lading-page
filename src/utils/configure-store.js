@@ -1,8 +1,9 @@
 import createSagaMiddleware from "redux-saga";
 import { createStore, applyMiddleware, compose } from "redux";
 import { routinePromiseWatcherSaga } from "redux-saga-routines";
-
+import { DAEMON } from './constants';
 import createReducer from "./create-reducer";
+import createSagas from "./create-sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -22,7 +23,12 @@ export default function configureStore(initialState = {}) {
 
   store.runSaga = sagaMiddleware.run;
   store.injectedReducers = {};
-  store.injectedSagas = {};
+  store.injectedSagas = {
+    'initSagas': {
+      mode: DAEMON,
+      task: store.runSaga(createSagas)
+    }
+  };
 
   store.runSaga(routinePromiseWatcherSaga);
 

@@ -1,0 +1,28 @@
+// checkbox styles
+.ds-checkbox input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  border-width: 10px;
+  outline: 0;
+  padding: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.ds-checkbox {
+  outline-offset: 1px;
+  border-radius: 3px;
+  border: 2px solid #000;
+  outline-color: #427ecc47;
+  outline-width: 2.5px;
+  outline-style: inset;
+  height: 12px;
+  width: 12px;
+  background-color: #eee;
+}
+
+.checkbox input[type="checkbox"]:focus + label::before {
+  outline: rgb(59, 153, 252) auto 5px;
+}

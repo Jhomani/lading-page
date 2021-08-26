@@ -1,5 +1,3 @@
-@import './variables.less';
-
 .border {
   border: solid 1px #e8e8e8;
 }
@@ -21,7 +19,7 @@
 .border-right {
   border-right: solid 1px #e8e8e8;
 }
-.border-0 {
+.border-none {
   border: 0 none !important;
 }
 
@@ -29,45 +27,94 @@
   cursor: pointer !important;
 }
 
-.primary-emphasis {
-  color: @primary-emphasis;
+// text-style
+.header1, h1 {
+  font-size: 96px;
+  line-height: 0.985;
+  font-weight: 300;
 }
-.primary-helper {
-  color: @primary-helper;
+.header2, h2 {
+  font-size: 60px;
+  line-height: 0.995;
+  font-weight: 300;
 }
-.primary-disabled {
-  color: @primary-disabled;
+.header3, h3 {
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 400;
+}
+.header4, h4 {
+  font-size: 34px;
+  line-height: .25;
+  font-weight: 400;
+}
+.header5, h5 {
+  font-size: 24px;
+  line-height: 0;
+  font-weight: 400;
+}
+.header6, h6 {
+  font-size: 20px;
+  line-height: 1.015;
+  font-weight: 500;
 }
 
-.txt-emphasis {
-  color: @text-emphasis;
+.sub-title1 {
+  font-size: 16px;
+  line-height: 1.015;
+  font-weight: 400;
 }
-.txt-helper {
-  color: @text-helper;
+.sub-title2 {
+  font-size: 14px;
+  line-height: 0.1;
+  font-weight: 500;
 }
-.txt-disabled {
-  color: @text-disabled;
+.txt-body1 {
+  font-size: 16px;
+  line-height: 1.05;
+  font-weight: 400;
+}
+.txt-body2 {
+  font-size: 14px;
+  line-height: 1.025;
+  font-weight: 400;
+}
+.txt-button {
+  font-size: 16px;
+  line-height: 1.015;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.caption {
+  font-size: 12px;
+  line-height: 1.04;
+  font-weight: 400;
+}
+.overline {
+  font-size: 10px;
+  line-height: 1.015;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
-.bg-primary {
-  background-color: @primary;
+// more styles
+.txt-capital {
+  text-transform: capitalize;
 }
-.bg-color {
-  background-color: @bg-color;
+.txt-upper {
+  text-transform: uppercase;
 }
-.bg-navbar {
-  background-color: @bg-navbar;
+.txt-lower {
+  text-transform: lowercase;
 }
 
-.elevation-5 {
-  box-shadow: @elavation5;
+.txt-center {
+  text-align: center;
 }
-.elevation-8 {
-  box-shadow: @elavation8;
+.txt-right {
+  text-align: right;
 }
-.elevation-10 {
-  box-shadow: @elavation10;
+.txt-left {
+  text-align: left;
 }
-.elevation-15 {
-  box-shadow: @elavation15;
-}
+

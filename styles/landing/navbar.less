@@ -22,10 +22,24 @@
       display: flex;
       align-items: center;
 
-      li {
+      .nav-item {
         display: flex;
-        align-items: center;
         padding: 10px;
+        align-items: center;
+        height: 80px;
+        max-height: 80px;
+        overflow: hidden;
+      }
+
+      a.nav-item {
+        &:extend(.sub-title1);
+        color: @primary-emphasis;
+        text-decoration: none;
+
+        &:hover {
+          color: @primary-hover;
+          transition: color .3s ease-in-out;
+        }
       }
     }
   }

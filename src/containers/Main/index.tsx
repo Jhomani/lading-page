@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { compose } from 'redux';
 import moment from 'moment';
 
 import { setDefaultColorMode, getNavigatorLocale } from '@utils/global'
 import { setDefaultValues } from "@redux/actions/app";
-import injectReducer from '@utils/inject-reducer';
-import injectSaga from '@utils/inject-saga';
+import Layout from '@landing/Layout';
 
-import saga from './redux/sagas';
-import reducer from './redux/reducer';
+import { copyFileSync } from 'fs';
+import { COPYFILE_FICLONE } from 'constants';
 
 export const IndexPage = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
@@ -25,15 +23,12 @@ export const IndexPage = ({ Component, pageProps }) => {
     dispatch(setDefaultValues({ locale, mode }));
   }, []);
 
+  console.log('int maing component yeah....')
   return (
-    <>
+    <Layout>
       <Component {...pageProps} />
-    </>
+    </Layout>
   );
 }
 
-const withReducer = injectReducer({ key: 'global', reducer });
-const withSagas = injectSaga({ key: 'Global', saga });
-
-//@ts-ignore
-export default compose(withSagas, withReducer)(IndexPage);
+export default memo(IndexPage);
