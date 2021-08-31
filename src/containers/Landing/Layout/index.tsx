@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '@components/Navbar';
-import { Language } from '@components/LangHelper';
+import { Navbar } from '@components/index';
+import { Language } from '@components/Language';
 
 interface InLandingLayout {
   authenticated?: boolean;
@@ -34,7 +34,7 @@ const leftItems = [
 
 const LandingLayout = ({ children }: InLandingLayout) => {
   return <>
-    <Navbar leftItems={leftItems} rightItems={[]} />
+    <Navbar items={leftItems} />
     {children}
     <h1> this is footer </h1>
     <h1> this is footer </h1>

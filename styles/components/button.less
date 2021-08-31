@@ -1,0 +1,58 @@
+[class^="btn-"] {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 0;
+  cursor: pointer;
+  padding: 10px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+  user-select: none;
+
+  span {
+    &:extend(.txt-button);
+    position: relative;
+    color: inherit;
+  }
+
+  &::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+  }
+}
+
+.btn-primary, .btn-gradient {
+  color: rgba(#fff, 87);
+
+  &:hover::before {
+    background-color: @light-hover;
+  }
+}
+
+.btn-primary {
+  background-color: @primary-variant;
+}
+
+.btn-gradient {
+  background-image: linear-gradient(to left, 
+    @primary-variant 0% 20% , 
+    @primary 40% 50%, 
+    @primary-variant 70% 100%);
+  box-shadow: 
+    0px 4px 17px rgba(@primary-variant, 0.8), 
+    0px -4px 17px rgba(@primary-variant, 0.5);
+  background-size: 300% 100%;
+  background-position-x: 100%;
+  animation: gradientBackground 1.5s ease infinite;
+
+  &:focus {
+    background-size: 100% 100%;
+    animation: none;
+  }
+}
+

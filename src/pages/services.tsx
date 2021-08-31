@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Language } from '@components/LangHelper';
+import { Language } from '@components/Language';
 
 const ServicesPage = () => {
   const handleSwitchLang = () => { }

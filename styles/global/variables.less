@@ -1,9 +1,17 @@
+@light-hover: rgba(#fff, .04);
+@dark-hover: rgba(#000, .04);
+
+@light-press: rgba(#fff, .1);
+@dark-press: rgba(#000, .1);
+
 :root {
-  --bg-color: #e6e6e6;
+  --bg-color: #f0f0f0;
   --bg-navbar: #fff;
   --text-emphasis: rgba(#000, .87);
   --text-helper: rgba(#000, .60);
   --text-disabled: rgba(#000, .38);
+  --dynamic-hover: @dark-hover;
+
 }
 
 __dark-mode:root, .__dark-mode {
@@ -12,6 +20,7 @@ __dark-mode:root, .__dark-mode {
   --text-emphasis: rgba(#fff, .87);
   --text-helper: rgba(#fff, .60);
   --text-disabled: rgba(#fff, .38);
+  --dynamic-hover: @light-hover;
 }
 
 @link-color: #1890ff; 
@@ -19,7 +28,7 @@ __dark-mode:root, .__dark-mode {
 @warning-color: #FFD465; 
 @error-color: #FF4A4A; 
 
-@primary: #498AFF;
+@primary: #399EFC;
 @primary-variant: #0f85f2;
 
 //text-styles
@@ -34,12 +43,16 @@ __dark-mode:root, .__dark-mode {
 @bg-color: var(--bg-color);
 @bg-navbar: var(--bg-navbar);
 
-@elavation5: 0px 0px 20px rgba(#000, 0.09);
+@elavation5: 3px 3px 20px -1px rgba(0, 0, 0, 0.1);
 @elavation8: 0px 0px 25px 5px rgba(#000, 0.15);
 @elavation10: 0px 0px 20px 5px rgba(66, 66, 66, 0.2);
 @elavation15: 5px 5px 20px 3px rgba(0, 0, 0, 0.1), 
     -1px -1px 20px rgba(66, 66, 66, 0.25);
 
 // status of accions
-@primary-selected: #3b9cf4;
+@primary-selected: rgba(@primary, .1);
+@dynamic-hover: var(--dynamic-hover);
 @primary-hover: #3197f4;
+
+// lengths
+@btn-height: 24px; 

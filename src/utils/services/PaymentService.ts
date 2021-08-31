@@ -46,7 +46,7 @@ class PaymentService extends MainService {
     };
 
     try {
-      let products = await this.g - etWithToken(
+      let products = await this.getWithToken(
         '/products/with-promotion', filter
       );
 

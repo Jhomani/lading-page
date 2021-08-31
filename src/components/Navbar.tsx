@@ -6,27 +6,29 @@ import Link from 'next/link';
 import { switchLanguage } from "@redux/actions/app";
 import { toggleColorMode } from '@utils/global'
 import { useDispatch, useStore } from 'react-redux';
+import { Language, getRawMessage } from '@components/Language';
 
 interface ItemIn {
   path?: string;
   label: string | JSX.Element;
 }
 
-interface NavBarIn {
+interface NavbarIn {
   items: ItemIn[];
 }
 
-const NavBar = ({ items }: NavBarIn) => {
+let Navbar = ({ items }: NavbarIn) => {
   const [bgNav, setBgNav] = useState('clean-navbar');
   const navBar = useRef(null);
   const router = useRouter();
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (window) {
       window.onscroll = ev => {
         let scrollTop = ev.target.scrollingElement.scrollTop;
-        if (scrollTop <= 51) setBgNav('clean-navbar');
+
+        if (scrollTop < 51) setBgNav('clean-navbar');
         else setBgNav('');
       };
 
@@ -54,6 +56,11 @@ const NavBar = ({ items }: NavBarIn) => {
   }, []);
 
   console.log('this is navbar....')
+
+  const switcherLang = (value) => {
+    console.log(value);
+    dispatch(switchLanguage(value));
+  }
 
   return <>
     <nav className={`navbar-component ${bgNav}`}>
@@ -86,19 +93,22 @@ const NavBar = ({ items }: NavBarIn) => {
           </li> */}
           {/* loss than 759px */}
           <li className="nav-item">
-            open
+            <button onClick={toggleColorMode.bind({})}>
+              theme
+            </button>
           </li>
           <li className="nav-item">
-            theme
+            <button onClick={switcherLang.bind({}, 'ES')}>
+              <Language langKey="changeLocale" />
+            </button>
           </li>
-
         </ul>
       </div>
     </nav>
   </>;
 }
 
-export default memo(NavBar, (prev, next) => {
+export default memo(Navbar, (prev, next) => {
   console.log(prev, next);
 
   return true;

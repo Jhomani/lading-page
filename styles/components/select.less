@@ -1,0 +1,82 @@
+.select-container {
+  display: inline-block;
+
+  &, .selected {
+    position: relative;
+    min-width: 98px;
+    height: 26px;
+    border-radius: 10px;
+  }
+
+  .selected > input {
+    &:extend(.sub-title1);
+    color: @primary-emphasis;
+    padding: 3px 7px;
+    border: 0;
+    text-align: start;
+    outline: 0;
+    cursor: pointer;
+    position: absolute;
+    inset: 0 0 0 0;
+    background: transparent;
+    width: 100%;
+  }
+
+  .selected  .selectIcon {
+    position: absolute;
+    transition: transform .5s ease;
+    transform-origin: center;
+    right: 6px;
+    bottom: 30%;
+  }
+
+  .selected > input:focus{
+    color: @primary-helper;
+  }
+  .selected > input:focus + .selectIcon {
+    transform: rotate(180deg);
+  }
+
+  .options {
+    &:extend(.txt-body2);
+    background-color: @bg-navbar;
+    border-radius: 9px;
+    animation: openOptions .5s;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: calc(100% + 6px);
+    box-shadow: @elavation5;
+    cursor: pointer;
+    z-index: 1;
+
+    li {
+      position: relative;
+      padding: 6px 7px;
+
+      span {
+        color: @primary-helper;
+        position: relative;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        background-color: transparent;
+        inset: 0;
+      }
+
+      &:hover::before {
+        background-color: @dynamic-hover;
+      }
+      &:first-child{
+        padding-top: 8px;
+      }
+      &:last-child {
+        padding-bottom: 8px;
+      } 
+    }
+  }
+
+}

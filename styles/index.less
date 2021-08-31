@@ -1,6 +1,6 @@
 @import "./global/index.less";
 
-//lading page
+@import "./components/index.less";
 @import "./landing/index.less";
 
 html, *::before, *::after, * {
@@ -14,6 +14,11 @@ html, *::before, *::after, * {
 
 ul {
   list-style: none;
+}
+
+button, li, a, .options {
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
 }
 
 html {

@@ -33,13 +33,19 @@
 }
 
 // status colors
+.primary-selected-btn > span {
+  color: @primary-emphasis !important;
+}
+.primary-selected-btn::before {
+  background-color: @primary-selected !important;
+}
+
 .primary-selected {
   color: @primary-selected !important;
 }
 .primary-hover {
   color: @primary-hover;
 }
-
 
 // boxshabw
 .elevation-5 {
