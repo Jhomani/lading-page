@@ -1,3 +1,14 @@
+// common 
+.commonPress {
+  height: 0;
+  width: 0;
+  inset: 50% auto auto 50% !important;
+  transform: translate(-50%, -50%);
+  animation: pressState .4s ease;
+  border-radius: 50px;
+}
+
+// developing 
 [class^="btn-"] {
   position: relative;
   overflow: hidden;
@@ -8,8 +19,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 60px;
+  min-width: 20px;
   user-select: none;
+  width: max-content;
+
+  &.flex-bottom {
+    align-items: flex-end;
+  }
+
+  &.round {
+    padding: 10px;
+    border-radius: 50%;
+
+    svg { margin: 0; }
+  }
+
+  svg { margin-right: 8px; }
 
   span {
     &:extend(.txt-button);
@@ -24,18 +49,47 @@
     inset: 0;
     background-color: transparent;
   }
+
+  &.onpressed::before {
+    &:extend(.commonPress);
+    background-color: @dynamic-press !important;
+  }
 }
 
 .btn-primary, .btn-gradient {
   color: rgba(#fff, 87);
+  fill: rgba(#fff, 87);
 
   &:hover::before {
     background-color: @light-hover;
+  }
+
+  &.onpressed::before {
+    &:extend(.commonPress);
+    background-color: @light-press !important;
   }
 }
 
 .btn-primary {
   background-color: @primary-variant;
+}
+
+.btn-transparent, .btn-secondary {
+  color: @text-emphasis;
+  fill: @text-emphasis;
+
+  &:hover::before {
+    background-color: @dynamic-hover;
+  }
+}
+
+.btn-transparent {
+  background-color: transparent;
+}
+
+.btn-secondary {
+  background-color: @secondary;
+
 }
 
 .btn-gradient {
@@ -49,10 +103,4 @@
   background-size: 300% 100%;
   background-position-x: 100%;
   animation: gradientBackground 1.5s ease infinite;
-
-  &:focus {
-    background-size: 100% 100%;
-    animation: none;
-  }
 }
-

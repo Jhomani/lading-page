@@ -4,6 +4,7 @@ import withReduxStore from "@utils/with-redux-store";
 import Main from "src/containers/Main";
 import Router from 'next/router';
 
+import globalEvents from '@utils/global-events';
 // import 'nprogress/nprogress.css';
 import 'styles/index.less';
 
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps, reduxStore }) {
   console.log('into re-render app')
 
   useEffect(() => {
+    globalEvents.init();
   }, []);
 
   return (

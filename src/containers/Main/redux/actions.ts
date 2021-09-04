@@ -9,7 +9,6 @@ import {
   PATCH_REQUEST_PAYMENT_START
 } from "./constants";
 import { InPayment } from '@utils/services'
-import { PromiseAcc } from '@utils/InGlobal'
 
 export const initialRequestMainStart = () => ({
   type: INITIAL_REQUEST_MAIN_START,

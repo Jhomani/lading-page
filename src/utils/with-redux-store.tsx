@@ -1,8 +1,8 @@
 import React from "react";
 
-import configureStore from "./configure-store";
+import configureStore from "./redux-config/configure-store";
 import { saveState } from "./persistStore";
-import middlewareRouterToken from "./authMiddlewareRouter";
+import middlewareRouterToken from "./redux-config/authMiddlewareRouter";
 import { INIT_STATE as auth } from "@redux/reducers/auth";
 
 import cookies from "next-cookies";

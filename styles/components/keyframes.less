@@ -11,9 +11,11 @@
 @keyframes pressState {
   0% {
     width: 0;
+    height: 0;
   }
   100% {
-    width: calc(100% + 20px);;
+    width: calc(100% + 50px);;
+    height: calc(100% + 50px);;
   }
 }
 
@@ -21,18 +23,4 @@
   0%{background-position:100% 0%}
   50%{background-position:0% 0%}
   100%{background-position:100% 0%}
-}
-
-.closeAnimation {
-  animation: closeOptions .5s !important;
-}
-
-.pressLight::before {
-  height: 100%;
-  width: 0;
-  background-color: @light-press !important;
-  inset: 50% auto auto 50% !important;
-  transform: translate(-50%, -50%);
-  animation: pressState .4s;
-  border-radius: 50px;
 }

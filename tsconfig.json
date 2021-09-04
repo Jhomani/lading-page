@@ -48,7 +48,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/containers/AppModule/redux/reducer.js",
-    "src/utils/configure-store.js"
+    "src/utils/redux-config/configure-store.js"
   ],
   "exclude": [
     "node_modules"

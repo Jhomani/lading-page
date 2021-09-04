@@ -1,4 +1,4 @@
-import { addCookies } from "./cookiesMiddleware";
+import { addCookies } from "./redux-config/cookiesMiddleware";
 import { getCookieName } from "./global";
 
 export const saveState = (hostname: string, state: Object) => {

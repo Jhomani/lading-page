@@ -60,7 +60,7 @@ export const Select = (props: SelectIn) => {
           onBlur={() => display && closeOptions()}
           value={optionsObj[selected]}
         />
-        <ShortArrow className="selectIcon" />
+        <ShortArrow color="var(--text-emphasis)" className="selectIcon" />
       </div>
       {display &&
         <ul className="options">

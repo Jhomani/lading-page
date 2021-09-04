@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { Select, Button } from '@components/index';
+import { Whatsapp } from '@components/icons'
 
 const options = [
   { key: 0, label: 'Carlos' },
@@ -25,9 +26,15 @@ const IndexPage = () => {
         initial={10}
         onSelected={handleSelected}
       />
+
       <br />
 
-      <Button content="data for you" type="gradient" />
+      <Button
+        content="Whatsapp"
+        type="secondary"
+        icon={<Whatsapp size="18" />}
+        to="/services"
+      />
     </div>
   </>;
 }

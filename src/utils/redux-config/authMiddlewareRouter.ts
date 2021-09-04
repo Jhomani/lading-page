@@ -1,5 +1,5 @@
-import redirectTo from "./redirectTo";
-import { role } from "./middlewareRole";
+import redirectTo from "../redirectTo";
+import { role } from "../middlewareRole";
 
 // TODO: here put all routes available to anyone.
 export const availableToAll = ['/', '/ingreso', "/registro"];

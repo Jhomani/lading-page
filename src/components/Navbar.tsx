@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useRef, memo } from 'react';
+import { useStatus, customUseReducer } from '@utils/custom-hook';
 import { useRouter } from 'next/router';
-import logo from '@components/images/logo.png';
 import Link from 'next/link';
 
+import logo from '@components/images/logo.png';
+import { Button } from '@components/index';
+import { Menu, LightMode } from '@components/icons'
 import { switchLanguage } from "@redux/actions/app";
-import { toggleColorMode } from '@utils/global'
 import { useDispatch, useStore } from 'react-redux';
-import { Language, getRawMessage } from '@components/Language';
+import globalEvents from '@utils/global-events';
 
 interface ItemIn {
   path?: string;
@@ -17,23 +19,25 @@ interface NavbarIn {
   items: ItemIn[];
 }
 
+const initialState = {
+  bgNavbar: 'clean-navbar',
+  screenWidth: 1337,
+}
+
 let Navbar = ({ items }: NavbarIn) => {
-  const [bgNav, setBgNav] = useState('clean-navbar');
+  const [state, setState, getRight] = useStatus(initialState);
+  const dispatch = useDispatch();
   const navBar = useRef(null);
   const router = useRouter();
-  const dispatch = useDispatch();
+
+  const { bgNavbar, screenWidth } = state;
 
   useEffect(() => {
-    if (window) {
-      window.onscroll = ev => {
-        let scrollTop = ev.target.scrollingElement.scrollTop;
+    if (window && window.scrollY > 31)
+      setState({ bgNavbar: '' });
 
-        if (scrollTop < 51) setBgNav('clean-navbar');
-        else setBgNav('');
-      };
-
-      if (window.scrollY > 51) setBgNav('');
-    }
+    if (window && window.innerWidth)
+      setState({ screenWidth: window.innerWidth });
 
     if (navBar.current) {
       let items = navBar.current.querySelectorAll('a.nav-item');
@@ -41,9 +45,8 @@ let Navbar = ({ items }: NavbarIn) => {
       for (let i of items) {
         let itemRef = i.getAttribute('href');
 
-        if (itemRef === router.pathname) {
+        if (itemRef === router.pathname)
           i.classList.add('primary-selected');
-        }
 
         i.onclick = e => {
           let target: HTMLElement = e.target;
@@ -53,9 +56,22 @@ let Navbar = ({ items }: NavbarIn) => {
         }
       }
     }
+
+    globalEvents.addResizeHandle(handleResize);
+    globalEvents.addScrollHandle(handleScroll);
   }, []);
 
-  console.log('this is navbar....')
+  const handleResize = (size: number) => {
+    console.log(size);
+  }
+
+  const handleScroll = (scrolled: number) => {
+    console.log(scrolled);
+    if (scrolled < 31)
+      setState({ bgNavbar: 'clean-navbar' });
+    else
+      setState({ bgNavbar: '' });
+  }
 
   const switcherLang = (value) => {
     console.log(value);
@@ -63,7 +79,7 @@ let Navbar = ({ items }: NavbarIn) => {
   }
 
   return <>
-    <nav className={`navbar-component ${bgNav}`}>
+    <nav className={`navbar-component ${bgNavbar}`}>
       <div className="navbar-container" ref={navBar}>
         <ul className="navbar-left">
           <li>
@@ -75,15 +91,23 @@ let Navbar = ({ items }: NavbarIn) => {
           </li>
         </ul>
         <ul className="navbar-right">
+          {/* {items.map((item, i) => item.path
+            ? <li key={i}>
+              <Link href={item.path}>
+                <a href={item.path} className="nav-item">
+                  {item.label}
+                </a>
+              </Link>
+            </li>
+            : <li key={i} className="nav-item">
+              {item.label}
+            </li>)
+          } */}
+
           {/* more than 759px */}
           {/* <li>
             <Link href="/services">
               <a href="/services" className="nav-item"> Services </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/prices">
-              <a href="/prices" className="nav-item"> Prices </a>
             </Link>
           </li>
           <li>
@@ -93,14 +117,20 @@ let Navbar = ({ items }: NavbarIn) => {
           </li> */}
           {/* loss than 759px */}
           <li className="nav-item">
-            <button onClick={toggleColorMode.bind({})}>
-              theme
-            </button>
+            <Button
+              type="secondary"
+              onClick={() => { }}
+              icon={<LightMode size="20" />}
+              shape="round"
+            />
           </li>
           <li className="nav-item">
-            <button onClick={switcherLang.bind({}, 'ES')}>
-              <Language langKey="changeLocale" />
-            </button>
+            <Button
+              type="secondary"
+              onClick={() => { }}
+              icon={<Menu size="20" />}
+              shape="round"
+            />
           </li>
         </ul>
       </div>

@@ -20,3 +20,8 @@ declare module "*.png" {
   const value: string;
   export default value;
 }
+
+declare interface PromiseAcc {
+  res: (value: unknown) => void;
+  rej: (value: unknown) => void;
+}

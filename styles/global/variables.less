@@ -7,20 +7,29 @@
 :root {
   --bg-color: #f0f0f0;
   --bg-navbar: #fff;
+  --secondary: #E8E8E8;
+
   --text-emphasis: rgba(#000, .87);
   --text-helper: rgba(#000, .60);
   --text-disabled: rgba(#000, .38);
+
   --dynamic-hover: @dark-hover;
+  --dynamic-press: @dark-press;
 
 }
 
 __dark-mode:root, .__dark-mode {
   --bg-color: #18191a;
   --bg-navbar: #242526;
+  --secondary: #3A3B3C;
+
+
   --text-emphasis: rgba(#fff, .87);
   --text-helper: rgba(#fff, .60);
   --text-disabled: rgba(#fff, .38);
+
   --dynamic-hover: @light-hover;
+  --dynamic-press: @light-press;
 }
 
 @link-color: #1890ff; 
@@ -30,6 +39,7 @@ __dark-mode:root, .__dark-mode {
 
 @primary: #399EFC;
 @primary-variant: #0f85f2;
+@secondary: var(--secondary);
 
 //text-styles
 @font-family: 'noir-pro';
@@ -52,7 +62,10 @@ __dark-mode:root, .__dark-mode {
 // status of accions
 @primary-selected: rgba(@primary, .1);
 @dynamic-hover: var(--dynamic-hover);
+@dynamic-press: var(--dynamic-press);
 @primary-hover: #3197f4;
+
+@primary-text-selected: rgba(@primary, .87);
 
 // lengths
 @btn-height: 24px; 
